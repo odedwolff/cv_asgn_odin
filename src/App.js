@@ -1,8 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import GenInfo from './components/GenInfo'
+import Button2States from './components/Button2States';
+
+
 
 function App() {
-  return (
+  
+  const call1 = ()=>{console.log("call1")};
+  const call2 = ()=>{console.log("call2")};
+  
+  return(<div>
+    <GenInfo></GenInfo>
+
+
+    <Button2States label1='label1' label2='label2' call1={call1} call2={call2} butState={1}> </Button2States>
+  </div>)
+  
+  
+  
+  /* return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -19,7 +36,10 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  ); */
+
+
+  
 }
 
 export default App;
