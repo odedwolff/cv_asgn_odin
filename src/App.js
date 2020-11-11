@@ -11,7 +11,7 @@ function App() {
   const call2 = ()=>{console.log("call2")};
   
   return(<div>
-    <GenInfo isEdit={true}></GenInfo>
+    <GenInfo isEdit={false}></GenInfo>
 
 
     {/* <Button2States label1='label1' label2='label2' call1={call1} call2={call2} butState={1}> </Button2States> */}
