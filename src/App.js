@@ -4,7 +4,6 @@ import GenInfo from './components/GenInfo'
 import Button2States from './components/Button2States';
 
 
-
 function App() {
   
   const call1 = ()=>{console.log("call1")};
