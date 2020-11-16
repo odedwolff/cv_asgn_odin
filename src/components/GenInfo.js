@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Address from './Address'
 import Button2States from './Button2States'
-import {printObj, testObj} from '../utils/data_print.js'
+import {renderObjViewMode, testObj} from '../utils/data_print.js'
 
 
 class GenInfo extends Component {
@@ -47,7 +47,7 @@ class GenInfo extends Component {
 
             {/* testing */}
             <div>
-                {printObj(testObj, 0)}            
+                {renderObjViewMode(testObj, 0)}            
             </div>
         </div>
 

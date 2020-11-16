@@ -1,15 +1,17 @@
 import React from 'react'
+import {colKey, colVal, lisItemKVal} from '../styles/style_basic'
 
 //print a fomatted object 
-export  function printObj(obj, depth){
+export  function renderObjViewMode(obj, depth){
     const keys = Object.keys(obj);
     return <ul>
          {
-                keys.map((k, i)=> <li key={i}>
-                                {typeof obj[k] === 'object'? printObj(obj[k], depth + 1) :
+                keys.map((k, i)=> <li key={i} style={lisItemKVal}>
+                                {typeof obj[k] === 'object'? renderObjViewMode(obj[k], depth + 1) :
                                  <div>
-                                    {indent(depth)} <div>{k}</div> <div>{obj[k]}</div>
-                                 </div>   }
+                                    {indent(depth)} <div style={colKey}>{k}</div> <div style={colVal}>{obj[k]}</div>
+                                 </div>  
+                                  }
                             </li>)
         }
     </ul>
@@ -18,7 +20,7 @@ export  function printObj(obj, depth){
 
 //indentation 
 function indent(depth){
-    const indBLock = <div>-@@@-</div>
+    const indBLock = <div></div>
     const children = [];
     for (var i = 0 ; i < depth ; i++){
         children.push(indBLock);
