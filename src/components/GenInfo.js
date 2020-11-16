@@ -47,7 +47,7 @@ class GenInfo extends Component {
 
             {/* testing */}
             <div>
-                {renderObjViewMode(testObj, 0)}            
+                {renderObjViewMode('test obj', testObj, 0)}            
             </div>
         </div>
 

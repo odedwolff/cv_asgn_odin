@@ -1,20 +1,25 @@
 import React from 'react'
 import {colKey, colVal, lisItemKVal, list} from '../styles/style_basic'
 
-//print a fomatted object 
-export  function renderObjViewMode(obj, depth){
+//render an object for view 
+export  function renderObjViewMode(objName, obj, depth){
     const keys = Object.keys(obj);
-    return <ul style = {list}>
-         {
-                keys.map((k, i)=> <li key={i} style={lisItemKVal}>
-                                {typeof obj[k] === 'object'? renderObjViewMode(obj[k], depth + 1) :
-                                 <div>
-                                    {indent(depth)} <div style={colKey}>{k}</div> <div style={colVal}>{obj[k]}</div>
-                                 </div>  
-                                  }
-                            </li>)
-        }
-    </ul>
+    return <div>
+            <p>{objName}</p>
+            <ul style = {list}>
+                {
+                        keys.map((k, i)=> <li key={i} style={lisItemKVal}>
+                                            {
+                                            //if object field is an object, call recureively
+                                            typeof obj[k] === 'object'? renderObjViewMode(k, obj[k], depth + 1) :
+                                            <div>
+                                                {indent(depth)} <div style={colKey}>{k}</div> <div style={colVal}>{obj[k]}</div>
+                                            </div>  
+                                            }
+                                         </li>)
+                }
+            </ul>
+        </div>
 
 };
 
