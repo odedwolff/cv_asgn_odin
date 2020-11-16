@@ -1,10 +1,10 @@
 import React from 'react'
-import {colKey, colVal, lisItemKVal} from '../styles/style_basic'
+import {colKey, colVal, lisItemKVal, list} from '../styles/style_basic'
 
 //print a fomatted object 
 export  function renderObjViewMode(obj, depth){
     const keys = Object.keys(obj);
-    return <ul>
+    return <ul style = {list}>
          {
                 keys.map((k, i)=> <li key={i} style={lisItemKVal}>
                                 {typeof obj[k] === 'object'? renderObjViewMode(obj[k], depth + 1) :

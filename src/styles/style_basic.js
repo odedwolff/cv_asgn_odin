@@ -30,5 +30,9 @@ export const colKey = {
         'margin-top':'5px'
 }
 
+export const list = {
+    'list-style-type': 'none'
+}
+
 
 
