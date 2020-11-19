@@ -3,6 +3,7 @@ import {colKey, colVal, lisItemKVal, list} from '../styles/style_basic'
 
 //render an object for view 
 export  function renderObjViewMode(objName, obj, depth){
+    console.log(`entering renderObjViewMode, obj= ${JSON.stringify(obj)}`);
     const keys = Object.keys(obj);
     return <div>
             <p>{objName}</p>
@@ -11,7 +12,7 @@ export  function renderObjViewMode(objName, obj, depth){
                         keys.map((k, i)=> <li key={i} style={lisItemKVal}>
                                             {
                                             //if object field is an object, call recureively
-                                            typeof obj[k] === 'object'? renderObjViewMode(k, obj[k], depth + 1) :
+                                            obj[k] && typeof obj[k] === 'object'? renderObjViewMode(k, obj[k], depth + 1) :
                                             <div>
                                                 {indent(depth)} <div style={colKey}>{k}</div> <div style={colVal}>{obj[k]}</div>
                                             </div>  

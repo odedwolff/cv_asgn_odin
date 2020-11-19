@@ -19,7 +19,16 @@ class GenInfo extends Component {
         this.woFormView = this.woFormView.bind(this);
         this.enterEdit = this.enterEdit.bind(this);
         this.enterView = this.enterView.bind(this);
+        this.dataForView = this.dataForView.bind(this);
+    }
 
+    dataForView(){
+        let {isEdit, ...rest} = this.state;
+        return rest;
+    }
+
+    updateAddress(addr){
+        this.setState({fldAddr:{...addr}});
     }
  
     woFormEdit() { return(
@@ -32,9 +41,11 @@ class GenInfo extends Component {
                     <label htmlFor="DoBInput">Date of Birth</label>
                     <input type="date" id="DoBInput" className="form-control" value={this.state.fldDoBirth}  onChange={(e)=>{this.setState({fldDoBirth:e.target.value})}}/>
                 </div>
-                <Address></Address>
+                <Address data={this.state.fldAddr} fSubmit = {this.updateAddress.bind(this)}></Address>
         </div>
     )};
+
+   
 
     woFormView (){ return( 
         <div>
@@ -47,8 +58,14 @@ class GenInfo extends Component {
 
             {/* testing */}
             <div>
-                {renderObjViewMode('test obj', testObj, 0)}            
+                {   //renderObjViewMode('test obj', testObj, 0)
+                    renderObjViewMode('General Info', this.dataForView(), 0)
+                }            
             </div>
+
+
+
+
         </div>
 
 

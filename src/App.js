@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import GenInfo from './components/GenInfo'
 import Button2States from './components/Button2States';
+import ClockB8 from './prototypes/Prototypes1'
 
 
 function App() {
@@ -10,7 +11,9 @@ function App() {
   const call2 = ()=>{console.log("call2")};
   
   return(<div>
-    <GenInfo isEdit={false}></GenInfo>
+     
+
+    <GenInfo isEdit={false}></GenInfo> 
 
 
     {/* <Button2States label1='label1' label2='label2' call1={call1} call2={call2} butState={1}> </Button2States> */}
