@@ -63,7 +63,7 @@ class Address extends Component {
     //ie, submit edited info 
     enterView(){
         this.setState({isEdit:false});
-        //this.handleSubmit(this.filterData());
+        this.handleSubmit(this.filterData());
     }
 
 
