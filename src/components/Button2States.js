@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
-
+/***
+ * component is a button with 2 states, and 2 transitions (events) between them
+ */
 /*button has 2 states, labels 1 and 2*/
 
 class Button2States extends Component {

@@ -5,6 +5,18 @@ import Button2States from './components/Button2States';
 import ClockB8 from './prototypes/Prototypes1'
 
 
+
+/*** CV Form App 
+ * Design: idea is to have compnents that are eithr in design or in edit mode. also, i tried to make parent model independant of the structure of their children, for instance, 
+ * the Genearl Info section does not have to know which fields in its Adress sub model. 
+ * 
+ * Implementation: edit mode is quite straight forward AFAICT, for the view mode i have implemented a universal view Util the renders information hirarchy recursevily 
+ *  
+ * 
+ */
+
+
+
 function App() {
   
   const call1 = ()=>{console.log("call1")};
