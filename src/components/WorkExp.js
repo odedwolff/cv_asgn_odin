@@ -10,24 +10,48 @@ class WorkExp extends Component {
         super(props);
         this.state = {
             isEdit:props.isEdit,
+            isAddingNewJob:false,
             jobs: [],
         }
     }
 
     filterData(){
         //console.log(`dateForView, state : ${JSON.stringify(this.state)}`);
-        let {isEdit, ...rest} = this.state;
+        let {isEdit, isAddingNewJob, ...rest} = this.state;
         //console.log(`dateForView, filterd obj : ${JSON.stringify(rest)}`);
         return rest;
     }
 
     renderEdit(){
         return <div>
-            {/**here come list of jobs */}
-            <label>add new job</label>
-            <Job></Job>
+            {/**here comes the list of jobs */}
+            {this.state.jobs.map((elm=>{<Job data={elm}></Job>}))}
+            
+            <button onClick={this.openNewJob.bind(this)}>add new job</button>
+            {this.state.isAddingNewJob ?
+               <div>
+                   <Job data={{}} fSubmit={this.submitNewJob.bind(this)}></Job>
+                   <button >done</button>
+               </div>
+              : null
+            }
+         
         </div>
     }
+
+    submitNewJob(newJob){
+        this.setState({jobs:{...this.state.jobs, newJob}});
+        this.setState({isAddingNewJob:false});
+    }
+
+
+
+    openNewJob(){
+        this.setState({isAddingNewJob:true});
+    }
+
+    
+
 
     renderView(){
         <div>
@@ -53,7 +77,7 @@ class WorkExp extends Component {
         return (
             <div>
             { this.state.isEdit? this.renderEdit() : this.renderView()}
-            <Button2States label2='Done' label1='Edit' call1={this.enterEdit.bind(this)} call2={this.enterView.bind(this)} butState={this.state.isEdit? 2 : 1}> </Button2States>
+            <Button2States label2='Done with Work Experience' label1='Edit work exp' call1={this.enterEdit.bind(this)} call2={this.enterView.bind(this)} butState={this.state.isEdit? 2 : 1}> </Button2States>
         </div>)
     }
 }

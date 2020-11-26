@@ -36,9 +36,9 @@ class Job extends React.Component{
 
     formEdit(){
         return <div>
-        <label htmlFor="company">name</label>
+        <label htmlFor="company">company</label>
         <input type="text" id="companyInput" className="form-control" value={this.state.fldCompany}  onChange={(e)=>{this.setState({fldCompany:e.target.value})}}/>
-        <label htmlFor="role">name</label>
+        <label htmlFor="role">role</label>
         <input type="text" id="roleInput" className="form-control" value={this.state.fldRole}  onChange={(e)=>{this.setState({fldRole:e.target.value})}}/>
         <label htmlFor="company">from</label>
         <input type="date" id="fromInput" className="form-control" value={this.state.fldFrom}  onChange={(e)=>{this.setState({fldFrom:e.target.value})}}/>
@@ -57,11 +57,21 @@ class Job extends React.Component{
         )
     }
 
+    enterEdit(){
+        this.setState({isEdit:true});
+    }
+
+    enterView(){
+        let data = this.filterData();
+        this.props.fSubmit(data);
+        this.setState({isEdit:false});
+    }
+
     render(){
         return (
             <div>
               { this.state.isEdit? this.formEdit() : this.formView()}
-              <Button2States label2='Done' label1='Edit' call1={this.enterEdit} call2={this.enterView} butState={this.state.isEdit? 2 : 1}> </Button2States>
+              <Button2States label2='Done with Job' label1='Edit Job' call1={this.enterEdit.bind(this)} call2={this.enterView.bind(this)} butState={this.state.isEdit? 2 : 1}> </Button2States>
          </div>)
     }
 }
