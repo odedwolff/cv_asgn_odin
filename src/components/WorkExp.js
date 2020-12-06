@@ -12,7 +12,12 @@ class WorkExp extends Component {
             isEdit:props.isEdit,
             isAddingNewJob:false,
             jobs: [],
+            dummK: null
         }
+
+        this.renderEdit = this.renderEdit.bind(this);
+        this.renderView = this.renderView.bind(this);
+
     }
 
     filterData(){
@@ -23,6 +28,7 @@ class WorkExp extends Component {
     }
 
     renderEdit(){
+        console.log(`entering renderEdit(), state=${this.state}`);
         return <div>
             {/**here comes the list of jobs */}
             {this.state.jobs.map((elm=>{<Job data={elm}></Job>}))}
@@ -40,7 +46,8 @@ class WorkExp extends Component {
     }
 
     submitNewJob(newJob){
-        this.setState({jobs:{...this.state.jobs, newJob}});
+        console.log(`adding new job ${JSON.stringify(newJob)}`);
+        this.setState({jobs:[...this.state.jobs, newJob]},  ()=>{console.log(`after adding job, this.state = ${JSON.stringify(this.state)}`);});
         this.setState({isAddingNewJob:false});
     }
 

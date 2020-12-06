@@ -16,15 +16,11 @@ class Job extends React.Component{
         super(props);
         this.state = {
             isEdit:false,
-        }
-        if(props.data){
-            this.setState({
-            fldCompany: props.data.fldCompany ?  props.data.fldCompany : null,
-            fldRole:props.data.fldRole ? props.data.fldRole : null ,
-            fldFrom:props.data.fldFrom? props.data.fldFrom: null, 
-            fldUntil:props.data.fldUntil ? props.data.fldUntil : null,
-            fldDesc:props.data.fldDesc ? props.data.fldDesc : null
-            });
+            fldCompany: props.data && props.data.fldCompany ?  props.data.fldCompany : "",
+            fldRole: props.data && props.data.fldRole ? props.data.fldRole : "" ,
+            fldFrom: props.data && props.data.fldFrom? props.data.fldFrom: "", 
+            fldUntil: props.data && props.data.fldUntil ? props.data.fldUntil :  "",
+            fldDesc: props.data && props.data.fldDesc ? props.data.fldDesc : ""
         }
     }
 
