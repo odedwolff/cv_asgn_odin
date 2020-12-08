@@ -51,12 +51,14 @@ class Job extends React.Component{
 
     formView(){
         const data =  this.filterData();
-        console.log(`job data=${JSON.stringify(data)}`);
+        //console.log(`job data=${JSON.stringify(data)}`);
         return (
             
             <div>
                 {renderObjViewMode('Job', data, 0)}
+                <button onClick={this.props.fDelete}>delete</button>
             </div>
+
         )
     }
 

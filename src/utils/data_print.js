@@ -1,15 +1,18 @@
 import React from 'react'
 import {colKey, colVal, lisItemKVal, list} from '../styles/style_basic'
+import uuid from 'react-uuid'
+
 
 //render an object for view 
 export  function renderObjViewMode(objName, obj, depth){
-    console.log(`entering renderObjViewMode, obj= ${JSON.stringify(obj)}`);
+    //console.log(`entering renderObjViewMode, obj= ${JSON.stringify(obj)}`);
     const keys = Object.keys(obj);
     return <div>
             <p>{objName}</p>
             <ul style = {list}>
                 {
-                        keys.map((k, i)=> <li key={i} style={lisItemKVal}>
+                        //keys.map((k, i)=> <li key={i} style={lisItemKVal}>
+                        keys.map((k)=> <li key={uuid()} style={lisItemKVal}>
                                             {
                                             //if object field is an object, call recureively
                                             obj[k] && typeof obj[k] === 'object'? renderObjViewMode(k, obj[k], depth + 1) :

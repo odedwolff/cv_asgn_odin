@@ -19,6 +19,13 @@ class WorkExp extends Component {
 
         const testJob2= {
             fldCompany: 'compan2',
+            fldRole: 'role 2' ,
+            fldFrom: 'date from 2', 
+            fldUntil:'date from 2',
+            fldDesc: 'description2'
+        }
+        const testJob3= {
+            fldCompany: 'compan3',
             fldRole: 'role 3' ,
             fldFrom: 'date from 2', 
             fldUntil:'date from 2',
@@ -28,7 +35,7 @@ class WorkExp extends Component {
         this.state = {
             isEdit:props.isEdit,
             isAddingNewJob:false,
-            jobs: [testJob1, testJob2],
+            jobs: [testJob1, testJob2, testJob3],
             dummK: 'dummValInit'
         }
 
@@ -40,7 +47,7 @@ class WorkExp extends Component {
     filterData(){
         //console.log(`dateForView, state : ${JSON.stringify(this.state)}`);
         let {isEdit, isAddingNewJob, ...rest} = this.state;
-        console.log(`dateForView, filterd obj : ${JSON.stringify(rest)}`);
+        //console.log(`dateForView, filterd obj : ${JSON.stringify(rest)}`);
         return rest;
     }
 
@@ -52,11 +59,20 @@ class WorkExp extends Component {
         this.setState({jobs: repJobs});
     }
 
+
+    removeElm(i){
+        const jobsMin = this.state.jobs.concat([]);
+        console.log(`removeElm(), i=${i} before rmoeve,arrayy=${JSON.stringify(jobsMin)} `);
+        jobsMin.splice(i,1);
+        console.log(`after remoe,arrayy=${JSON.stringify(jobsMin)} `);
+        this.setState({jobs: jobsMin});
+    }
+
     renderEdit(){
         console.log(`entering renderEdit(), state=${this.state}`);
         return <div>
             {/**here comes the list of jobs */}
-            {this.state.jobs.map(((elm, i) =><Job fSubmit = {this.updateElm.bind(this, i)} data={elm}></Job>))}
+            {this.state.jobs.map(((elm, i) =><Job key={i} fSubmit = {this.updateElm.bind(this, i)} fDelete = {this.removeElm.bind(this, i)} data={elm}></Job>))}
             
             <button onClick={this.openNewJob.bind(this)}>add new job</button>
             {this.state.isAddingNewJob ?
@@ -107,7 +123,7 @@ class WorkExp extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        console.log(`component did update. current state= ${JSON.stringify(this.state)}`);
+        //console.log(`component did update. current state= ${JSON.stringify(this.state)}`);
     }
 
    
