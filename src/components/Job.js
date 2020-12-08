@@ -22,6 +22,10 @@ class Job extends React.Component{
             fldUntil: props.data && props.data.fldUntil ? props.data.fldUntil :  "",
             fldDesc: props.data && props.data.fldDesc ? props.data.fldDesc : ""
         }
+
+        this.formEdit = this.formEdit.bind(this);
+        this.formView = this.formView.bind(this);
+
     }
 
     filterData(){
@@ -46,9 +50,12 @@ class Job extends React.Component{
     }
 
     formView(){
+        const data =  this.filterData();
+        console.log(`job data=${JSON.stringify(data)}`);
         return (
+            
             <div>
-                {renderObjViewMode('Job', this.filterData(), 0)}
+                {renderObjViewMode('Job', data, 0)}
             </div>
         )
     }

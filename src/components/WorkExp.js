@@ -8,11 +8,28 @@ import Button2States from './Button2States'
 class WorkExp extends Component {
     constructor(props){
         super(props);
+      
+        const testJob1= {
+            fldCompany: 'compan1',
+            fldRole: 'role 1' ,
+            fldFrom: 'date from 1', 
+            fldUntil:'date from 1',
+            fldDesc: 'description1'
+        }
+
+        const testJob2= {
+            fldCompany: 'compan2',
+            fldRole: 'role 3' ,
+            fldFrom: 'date from 2', 
+            fldUntil:'date from 2',
+            fldDesc: 'description2'
+        }
+
         this.state = {
             isEdit:props.isEdit,
             isAddingNewJob:false,
-            jobs: [],
-            dummK: null
+            jobs: [testJob1, testJob2],
+            dummK: 'dummValInit'
         }
 
         this.renderEdit = this.renderEdit.bind(this);
@@ -23,7 +40,7 @@ class WorkExp extends Component {
     filterData(){
         //console.log(`dateForView, state : ${JSON.stringify(this.state)}`);
         let {isEdit, isAddingNewJob, ...rest} = this.state;
-        //console.log(`dateForView, filterd obj : ${JSON.stringify(rest)}`);
+        console.log(`dateForView, filterd obj : ${JSON.stringify(rest)}`);
         return rest;
     }
 
@@ -31,7 +48,7 @@ class WorkExp extends Component {
         console.log(`entering renderEdit(), state=${this.state}`);
         return <div>
             {/**here comes the list of jobs */}
-            {this.state.jobs.map((elm=>{<Job data={elm}></Job>}))}
+            {this.state.jobs.map((elm=><Job data={elm}></Job>))}
             
             <button onClick={this.openNewJob.bind(this)}>add new job</button>
             {this.state.isAddingNewJob ?
@@ -61,9 +78,10 @@ class WorkExp extends Component {
 
 
     renderView(){
+        return (
         <div>
               {renderObjViewMode('Work Expreience', this.filterData(), 0)}
-        </div>
+        </div>)
     }
 
     filterData(){
@@ -78,6 +96,12 @@ class WorkExp extends Component {
     enterView(){
         this.setState({isEdit:false});
     }
+
+    componentDidUpdate(prevProps) {
+        console.log(`component did update. current state= ${JSON.stringify(this.state)}`);
+    }
+
+   
 
 
     render(){
