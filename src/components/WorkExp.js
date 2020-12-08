@@ -44,11 +44,19 @@ class WorkExp extends Component {
         return rest;
     }
 
+    updateElm(i, repElm){
+        //clone
+        const repJobs = this.state.jobs.concat([]);
+        //replace
+        repJobs[i] = repElm;
+        this.setState({jobs: repJobs});
+    }
+
     renderEdit(){
         console.log(`entering renderEdit(), state=${this.state}`);
         return <div>
             {/**here comes the list of jobs */}
-            {this.state.jobs.map((elm=><Job data={elm}></Job>))}
+            {this.state.jobs.map(((elm, i) =><Job fSubmit = {this.updateElm.bind(this, i)} data={elm}></Job>))}
             
             <button onClick={this.openNewJob.bind(this)}>add new job</button>
             {this.state.isAddingNewJob ?
@@ -61,6 +69,7 @@ class WorkExp extends Component {
          
         </div>
     }
+
 
     submitNewJob(newJob){
         console.log(`adding new job ${JSON.stringify(newJob)}`);
