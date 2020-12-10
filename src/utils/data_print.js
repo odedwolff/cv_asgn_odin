@@ -1,18 +1,21 @@
 import React from 'react'
 import {colKey, colVal, lisItemKVal, list} from '../styles/style_basic'
-import uuid from 'react-uuid'
+import { v4 as uuidv4 } from 'uuid';
+import jsxToString from 'jsx-to-string';
+
 
 
 //render an object for view 
 export  function renderObjViewMode(objName, obj, depth){
     //console.log(`entering renderObjViewMode, obj= ${JSON.stringify(obj)}`);
     const keys = Object.keys(obj);
-    return <div>
+   const jsx= <div>
             <p>{objName}</p>
             <ul style = {list}>
                 {
-                        //keys.map((k, i)=> <li key={i} style={lisItemKVal}>
-                        keys.map((k)=> <li key={uuid()} style={lisItemKVal}>
+                       /*  keys.map((k)=> <li key={uuidv4()} style={lisItemKVal}> */
+                        keys.map((k)=> <li key={uuidv4()} >
+
                                             {
                                             //if object field is an object, call recureively
                                             obj[k] && typeof obj[k] === 'object'? renderObjViewMode(k, obj[k], depth + 1) :
@@ -24,6 +27,8 @@ export  function renderObjViewMode(objName, obj, depth){
                 }
             </ul>
         </div>
+    //console.log(`out from renderObjViewMode() = ${jsxToString(jsx)}`);
+    return jsx;
 
 };
 
@@ -34,7 +39,7 @@ function indent(depth){
     for (var i = 0 ; i < depth ; i++){
         children.push(indBLock);
     }
-    return React.createElement('div', null, children);
+    return React.createElement('div', {className:"div_indentation"}, children);
 };
 
 

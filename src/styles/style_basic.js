@@ -5,9 +5,9 @@ export const colKey = {
     fontFamily: "Arial",
     display: 'inline',
     width: '50px',
-    'border-width': '1px', 
-    'border-style': 'solid', 
-    'border-color': '#9c9797',
+    'borderWidth': '1px', 
+    'borderStyle': 'solid', 
+    'borderColor': '#9c9797',
     'background': '#a88f8f'
   };
 
@@ -19,19 +19,19 @@ export const colKey = {
     fontFamily: "Arial",
     display: 'inline',
     width: '50px',
-    'border-width': '1px', 
-    'border-style': 'solid', 
-    'border-color': '#9c9797',
+    'borderWidth': '1px', 
+    'borderStyle': 'solid', 
+    'borderColor': '#9c9797',
     'background': '#74b2ee'
   };
 
   export const lisItemKVal = {
-        'min-height':'35px',
-        'margin-top':'5px'
+        'minHeight':'35px',
+        'marginTop':'5px'
 }
 
 export const list = {
-    'list-style-type': 'none'
+    'listStyleType': 'none'
 }
 
 

@@ -4,6 +4,8 @@ import GenInfo from './components/GenInfo'
 import WorkExp from './components/WorkExp'
 import Button2States from './components/Button2States';
 import ClockB8 from './prototypes/Prototypes1'
+import jsxToString from 'jsx-to-string';
+
 
 
 
@@ -23,7 +25,7 @@ function App() {
   const call1 = ()=>{console.log("call1")};
   const call2 = ()=>{console.log("call2")};
   
-  return(<div>
+  const jsxOut = (<div>
      
     <h2>General Info</h2>
     <GenInfo isEdit={false}></GenInfo> 
@@ -33,6 +35,10 @@ function App() {
 
     {/* <Button2States label1='label1' label2='label2' call1={call1} call2={call2} butState={1}> </Button2States> */}
   </div>)
+
+//console.log(`app function render output = \n ${jsxToString(jsxOut)}`);
+
+  return jsxOut;
     
 }
 

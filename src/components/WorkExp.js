@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import {renderObjViewMode} from '../utils/data_print.js'
 import Job from './Job'
 import Button2States from './Button2States'
+import { v4 as uuidv4 } from 'uuid';
+
 
 
 
@@ -72,7 +74,7 @@ class WorkExp extends Component {
         console.log(`entering renderEdit(), state=${this.state}`);
         return <div>
             {/**here comes the list of jobs */}
-            {this.state.jobs.map(((elm, i) =><Job key={i} fSubmit = {this.updateElm.bind(this, i)} fDelete = {this.removeElm.bind(this, i)} data={elm}></Job>))}
+            {this.state.jobs.map(((elm, i) =><Job key={uuidv4()} fSubmit = {this.updateElm.bind(this, i)} fDelete = {this.removeElm.bind(this, i)} data={elm}></Job>))}
             
             <button onClick={this.openNewJob.bind(this)}>add new job</button>
             {this.state.isAddingNewJob ?
